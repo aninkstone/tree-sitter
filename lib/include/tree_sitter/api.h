@@ -62,6 +62,7 @@ typedef enum TSInputEncoding {
   TSInputEncodingUTF8,
   TSInputEncodingUTF16LE,
   TSInputEncodingUTF16BE,
+  TSInputEncodingUTF32,
   TSInputEncodingCustom
 } TSInputEncoding;
 

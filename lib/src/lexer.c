@@ -118,6 +118,23 @@ static void ts_lexer__get_lookahead(Lexer *self) {
     self->input.encoding == TSInputEncodingUTF8    ? ts_decode_utf8     :
     self->input.encoding == TSInputEncodingUTF16LE ? ts_decode_utf16_le :
     self->input.encoding == TSInputEncodingUTF16BE ? ts_decode_utf16_be : self->input.decode;
+  UnicodeDecodeFunction decode = NULL;
+  switch (self->input.encoding) {
+      case TSInputEncodingUTF8:
+          decode = ts_decode_utf8;
+          break;
+      case TSInputEncodingUTF16LE:
+          decode = ts_decode_utf16_le;
+          break;
+  	  case TSInputEncodingUTF16BE:
+          decode = ts_decode_utf16_be;
+          break;
+      case TSInputEncodingUTF32:
+          decode = ts_decode_utf32;
+          break;
+      default:
+          break;
+  }
 
   self->lookahead_size = decode(chunk, size, &self->data.lookahead);
 
