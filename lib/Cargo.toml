@@ -39,7 +39,7 @@ package = "wasmtime-c-api-impl"
 default-features = false
 
 [build-dependencies]
-bindgen = { version = "0.69.4", optional = true }
+bindgen = { version = "0.70.1", optional = true }
 cc.workspace = true
 
 [lib]
